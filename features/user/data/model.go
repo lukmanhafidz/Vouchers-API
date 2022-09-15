@@ -3,12 +3,12 @@ package data
 import "Test/domain"
 
 type User struct {
-	Username    string `json:"username" form:"username" validate:"required"`
-	Fullname    string `json:"fullname" form:"fullname"`
-	Email       string `json:"email" form:"email"`
-	City        string `json:"city" form:"city"`
-	Phonenumber string `json:"phonenumber" form:"phonenumber"`
-	Password    string `json:"password" form:"password" validate:"required"`
+	Username    string `json:"username" validate:"required"`
+	Fullname    string `json:"fullname"`
+	Email       string `json:"email"`
+	City        string `json:"city"`
+	Phonenumber string `json:"phonenumber"`
+	Password    string `json:"password" validate:"required"`
 	Points      int
 	Balance     int
 	Role        string

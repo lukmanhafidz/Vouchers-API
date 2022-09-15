@@ -5,6 +5,10 @@ import (
 	udeli "Test/features/user/delivery"
 	uc "Test/features/user/usecase"
 
+	bd "Test/features/brand/data"
+	bdeli "Test/features/brand/delivery"
+	bc "Test/features/brand/usecase"
+
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
@@ -17,4 +21,9 @@ func InitFactory(e *echo.Echo, db *gorm.DB) {
 	userCase := uc.New(userData, valid)
 	userHandler := udeli.New(userCase)
 	udeli.RouteUser(e, userHandler)
+
+	brandData := bd.New(db)
+	brandCase := bc.New(brandData, valid)
+	brandHandler := bdeli.New(brandCase)
+	bdeli.RouteBrand(e, brandHandler)
 }
