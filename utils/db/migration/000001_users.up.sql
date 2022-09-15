@@ -7,7 +7,8 @@ create table Users(
 	Phonenumber varchar(20),
 	Password varchar(255)not null,
 	Points int,
-	Balance int
+	Balance int,
+	Role varchar(20) not null,
 );
 
 create table Brands(
