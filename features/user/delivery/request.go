@@ -12,25 +12,25 @@ type UserFormat struct {
 	Balance     int    `json:"balance"`
 }
 type LoginFormat struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
 }
 
-func (i *LoginFormat) ToModelLogin() domain.User {
+func (f *LoginFormat) ToModelLogin() domain.User {
 	return domain.User{
-		Username: i.Username,
-		Password: i.Password,
+		Username: f.Username,
+		Password: f.Password,
 	}
 }
 
-func (i *UserFormat) ToModel() domain.User {
+func (f *UserFormat) ToModel() domain.User {
 	return domain.User{
-		Username:    i.Username,
-		Email:       i.Email,
-		City:        i.City,
-		Phonenumber: i.Phonenumber,
-		Password:    i.Password,
-		Points:      i.Points,
-		Balance:     i.Balance,
+		Username:    f.Username,
+		Email:       f.Email,
+		City:        f.City,
+		Phonenumber: f.Phonenumber,
+		Password:    f.Password,
+		Points:      f.Points,
+		Balance:     f.Balance,
 	}
 }

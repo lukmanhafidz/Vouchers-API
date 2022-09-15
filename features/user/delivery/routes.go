@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-func RouteUser(e *echo.Echo, usr domain.UserHandler) {
+func RouteUser(e *echo.Echo, uh domain.UserHandler) {
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"*"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderAuthorization},
@@ -15,6 +15,6 @@ func RouteUser(e *echo.Echo, usr domain.UserHandler) {
 	}))
 	e.Pre(middleware.RemoveTrailingSlash())
 
-	e.POST("/login", usr.Login())
-	e.POST("/users", usr.Register())
+	e.POST("/login", uh.Login())
+	e.POST("/users", uh.Register())
 }

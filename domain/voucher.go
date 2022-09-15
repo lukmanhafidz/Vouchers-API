@@ -3,13 +3,12 @@ package domain
 import "github.com/labstack/echo/v4"
 
 type Voucher struct {
-	ID           int
-	Name         string
-	BrandID      int
-	CiM          int
-	CiP          int
-	Code         string
-	Transactions []Transactions
+	ID      int
+	Name    string
+	BrandID int
+	CiM     int
+	CiP     int
+	Code    string
 }
 
 type VoucherHandler interface {
