@@ -19,18 +19,18 @@ create table Brands(
 create table Vouchers(
 	ID int not null auto_increment primary key,
 	Name varchar(255),
-	BrandID int,
-	CiM int,
-	CiP int,
+	Brand_ID int,
+	CIM int,
+	CIP int,
 	Code varchar(255),
-	foreign key (BrandID) references Brands(ID)
+	foreign key (Brand_ID) references Brands(ID)
 );
 
 create table Transactions(
 	ID int not null auto_increment primary key,
-	VoucherID int,
-	UserID int,
+	Voucher_ID int,
+	User_ID int,
 	Status varchar(255),
-	foreign key (VoucherID) references Vouchers(ID),
-	foreign key (UserID) references Users(ID)
+	foreign key (Voucher_ID) references Vouchers(ID),
+	foreign key (User_ID) references Users(ID)
 );

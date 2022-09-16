@@ -9,6 +9,10 @@ import (
 	bdeli "Test/features/brand/delivery"
 	bc "Test/features/brand/usecase"
 
+	vd "Test/features/voucher/data"
+	vdeli "Test/features/voucher/delivery"
+	vc "Test/features/voucher/usecase"
+
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
@@ -26,4 +30,9 @@ func InitFactory(e *echo.Echo, db *gorm.DB) {
 	brandCase := bc.New(brandData, valid)
 	brandHandler := bdeli.New(brandCase)
 	bdeli.RouteBrand(e, brandHandler)
+
+	voucherData := vd.New(db)
+	voucherCase := vc.New(voucherData, valid)
+	voucherHandler := vdeli.New(voucherCase)
+	vdeli.RouteVoucher(e, voucherHandler)
 }
