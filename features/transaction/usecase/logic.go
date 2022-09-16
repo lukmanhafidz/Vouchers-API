@@ -31,6 +31,11 @@ func (tc *transactionUseCase) CreateRedeem(newTrans domain.Transaction, id int) 
 		return 400
 	}
 
+	if id == 0 {
+		log.Println("ID = 0")
+		return 500
+	}
+
 	price := tc.transactionData.GetVoucherData(transaction.VoucherID)
 	transaction.Total = transaction.Items * price
 	transaction.Code = uuid.New().String()
