@@ -3,17 +3,17 @@ package data
 import "Test/domain"
 
 type Brand struct {
-	Name string `json:"name" validate:"required"`
+	BrandName string `json:"name" validate:"required"`
 }
 
 func (b *Brand) ToModel() domain.Brand {
 	return domain.Brand{
-		Name: b.Name,
+		BrandName: b.BrandName,
 	}
 }
 
 func FromModel(data domain.Brand) Brand {
 	var res Brand
-	res.Name = data.Name
+	res.BrandName = data.BrandName
 	return res
 }
