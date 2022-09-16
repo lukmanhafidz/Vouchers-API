@@ -32,7 +32,7 @@ func (vc *voucherUseCase) CreateVoucher(newVoucher domain.Voucher) int {
 
 	create := vc.voucherData.CreateVoucherData(voucher.ToModel())
 
-	if create.Name == "" {
+	if create.VoucherName == "" {
 		log.Println("Empty Data")
 		return 500
 	}
@@ -52,7 +52,7 @@ func (vc *voucherUseCase) GetAllVoucher(brandID int) ([]map[string]interface{}, 
 	for i := 0; i < len(data); i++ {
 		var res = map[string]interface{}{}
 		res["voucherID"] = data[i].ID
-		res["name"] = data[i].Name
+		res["name"] = data[i].VoucherName
 		res["brandName"] = data[i].BrandName
 		res["cim"] = data[i].Cim
 		res["cip"] = data[i].Cip
@@ -73,7 +73,7 @@ func (vc *voucherUseCase) GetByIDVoucher(id int) (map[string]interface{}, int) {
 	}
 
 	res["voucherID"] = data.ID
-	res["name"] = data.Name
+	res["name"] = data.VoucherName
 	res["brandName"] = data.BrandName
 	res["cim"] = data.Cim
 	res["cip"] = data.Cip

@@ -72,8 +72,8 @@ func (uc *userUseCase) RegisterUser(newUser domain.User, cost int) int {
 
 	user.Password = string(hashed)
 	user.Role = "user"
-	user.Balance = 0
-	user.Points = 0
+	user.Balance = 10000
+	user.Points = 100
 	insert := uc.userData.RegisterData(user.ToModel())
 
 	if insert.Username == "" {

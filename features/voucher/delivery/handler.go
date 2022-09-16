@@ -2,6 +2,7 @@ package delivery
 
 import (
 	"Test/domain"
+	"Test/features/common"
 	"log"
 	"net/http"
 	"strconv"
@@ -23,6 +24,15 @@ func New(vc domain.VoucherUseCase) domain.VoucherHandler {
 func (vh *voucherHandler) Create() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var newVoucher VoucherFormat
+
+		token := common.ExtractData(c)
+		if token.Role == "user" {
+			return c.JSON(http.StatusUnauthorized, map[string]interface{}{
+				"code":    http.StatusUnauthorized,
+				"message": "unauthorized",
+			})
+		}
+
 		bind := c.Bind(&newVoucher)
 		if bind != nil {
 			log.Println("cant bind")

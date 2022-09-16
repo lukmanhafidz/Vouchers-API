@@ -3,6 +3,7 @@ package data
 import "Test/domain"
 
 type User struct {
+	ID          int
 	Username    string `json:"username" validate:"required"`
 	Fullname    string `json:"fullname"`
 	Email       string `json:"email"`
@@ -16,6 +17,7 @@ type User struct {
 
 func (u *User) ToModel() domain.User {
 	return domain.User{
+		ID:          u.ID,
 		Username:    u.Username,
 		Email:       u.Email,
 		City:        u.City,
@@ -29,6 +31,7 @@ func (u *User) ToModel() domain.User {
 
 func FromModel(data domain.User) User {
 	var res User
+	res.ID = data.ID
 	res.Username = data.Username
 	res.Email = data.Email
 	res.City = data.City
