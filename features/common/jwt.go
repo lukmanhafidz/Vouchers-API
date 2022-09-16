@@ -14,6 +14,11 @@ import (
 
 func GenerateToken(userdata domain.User) string {
 	info := jwt.MapClaims{}
+
+	if userdata.ID == 0 {
+		return ""
+	}
+
 	info["ID"] = userdata.ID
 	info["Role"] = userdata.Role
 	auth := jwt.NewWithClaims(jwt.SigningMethodHS256, info)

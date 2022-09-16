@@ -41,6 +41,10 @@ func (uc *userUseCase) Login(userLogin domain.User) (map[string]interface{}, int
 
 	tokenjwt := common.GenerateToken(login)
 
+	if tokenjwt == "" {
+		return nil, 500
+	}
+
 	resMap["token"] = tokenjwt
 	resMap["username"] = login.Username
 	resMap["role"] = login.Role

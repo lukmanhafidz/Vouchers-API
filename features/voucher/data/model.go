@@ -17,7 +17,6 @@ type Voucher_Brand struct {
 	BrandName   string
 	Cim         int
 	Cip         int
-	Code        string
 }
 
 func (v *Voucher) ToModel() domain.Voucher {
@@ -36,7 +35,6 @@ func (vb *Voucher_Brand) ToModelVoucher_Brand() domain.Voucher_Brand {
 		BrandName:   vb.BrandName,
 		Cim:         vb.Cim,
 		Cip:         vb.Cip,
-		Code:        vb.Code,
 	}
 }
 

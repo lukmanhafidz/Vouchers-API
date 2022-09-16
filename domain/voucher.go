@@ -8,7 +8,6 @@ type Voucher struct {
 	BrandID     int
 	Cim         int
 	Cip         int
-	Code        string
 }
 
 type Voucher_Brand struct {
@@ -17,7 +16,6 @@ type Voucher_Brand struct {
 	BrandName   string
 	Cim         int
 	Cip         int
-	Code        string
 }
 
 type VoucherHandler interface {
