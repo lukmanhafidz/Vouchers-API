@@ -6,9 +6,18 @@ type Voucher struct {
 	ID      int
 	Name    string
 	BrandID int
-	CiM     int
-	CiP     int
+	Cim     int
+	Cip     int
 	Code    string
+}
+
+type Voucher_Brand struct {
+	ID        int
+	Name      string
+	BrandName string
+	Cim       int
+	Cip       int
+	Code      string
 }
 
 type VoucherHandler interface {
@@ -19,12 +28,12 @@ type VoucherHandler interface {
 
 type VoucherUseCase interface {
 	CreateVoucher(newVoucher Voucher) int
-	GetByIDVoucher(id int) int
-	GetAllVoucher(brandID int) int
+	GetByIDVoucher(id int) (map[string]interface{}, int)
+	GetAllVoucher(brandID int) ([]map[string]interface{}, int)
 }
 
 type VoucherData interface {
 	CreateVoucherData(newVoucher Voucher) Voucher
-	GetByIDVoucherData(id int) Voucher
-	GetAllVoucherData(brandID int) []Voucher
+	GetByIDVoucherData(id int) Voucher_Brand
+	GetAllVoucherData(brandID int) []Voucher_Brand
 }
