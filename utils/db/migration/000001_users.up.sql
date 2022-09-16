@@ -22,7 +22,6 @@ create table Vouchers(
 	Brand_ID int,
 	CIM int,
 	CIP int,
-	Code varchar(255),
 	foreign key (Brand_ID) references Brands(ID)
 );
 
@@ -30,7 +29,10 @@ create table Transactions(
 	ID int not null auto_increment primary key,
 	Voucher_ID int,
 	User_ID int,
+	Items int,
 	Status varchar(255),
+	Code varchar(255),
+	Total int,
 	foreign key (Voucher_ID) references Vouchers(ID),
 	foreign key (User_ID) references Users(ID)
 );

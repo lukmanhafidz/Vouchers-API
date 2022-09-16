@@ -3,21 +3,21 @@ package domain
 import "github.com/labstack/echo/v4"
 
 type Voucher struct {
-	ID      int
-	Name    string
-	BrandID int
-	Cim     int
-	Cip     int
-	Code    string
+	ID          int
+	VoucherName string
+	BrandID     int
+	Cim         int
+	Cip         int
+	Code        string
 }
 
 type Voucher_Brand struct {
-	ID        int
-	Name      string
-	BrandName string
-	Cim       int
-	Cip       int
-	Code      string
+	ID          int
+	VoucherName string
+	BrandName   string
+	Cim         int
+	Cip         int
+	Code        string
 }
 
 type VoucherHandler interface {

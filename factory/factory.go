@@ -13,6 +13,10 @@ import (
 	vdeli "Test/features/voucher/delivery"
 	vc "Test/features/voucher/usecase"
 
+	td "Test/features/transaction/data"
+	tdeli "Test/features/transaction/delivery"
+	tc "Test/features/transaction/usecase"
+
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
@@ -35,4 +39,9 @@ func InitFactory(e *echo.Echo, db *gorm.DB) {
 	voucherCase := vc.New(voucherData, valid)
 	voucherHandler := vdeli.New(voucherCase)
 	vdeli.RouteVoucher(e, voucherHandler)
+
+	transactionData := td.New(db)
+	transactionCase := tc.New(transactionData, valid)
+	transactionHandler := tdeli.New(transactionCase)
+	tdeli.RouteVoucher(e, transactionHandler)
 }

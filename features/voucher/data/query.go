@@ -33,8 +33,8 @@ func (vd *voucherData) CreateVoucherData(newVoucher domain.Voucher) domain.Vouch
 func (vd *voucherData) GetAllVoucherData(brandID int) []domain.Voucher_Brand {
 	var voucher []Voucher_Brand
 
-	err := vd.db.Model(&Voucher{}).Select("vouchers.id, vouchers.name, brands.brand_name, vouchers.cim, vouchers.cip").
-		Joins("join brands on vouchers.brand_id = brands.id").Scan(&voucher)
+	err := vd.db.Model(&Voucher{}).Select("vouchers.id, vouchers.voucher_name, brands.brand_name, vouchers.cim, vouchers.cip").
+		Joins("join brands on vouchers.brand_id = brands.id").Where("vouchers.brand_id = ?", brandID).Scan(&voucher)
 
 	if err.Error != nil {
 		log.Println("cant get vouchers data", err.Error.Error())
@@ -53,8 +53,8 @@ func (vd *voucherData) GetAllVoucherData(brandID int) []domain.Voucher_Brand {
 func (vd *voucherData) GetByIDVoucherData(id int) domain.Voucher_Brand {
 	var voucher Voucher_Brand
 
-	err := vd.db.Model(&Voucher{}).Select("vouchers.id, vouchers.name, brands.brand_name, vouchers.cim, vouchers.cip").
-		Joins("join brands on vouchers.brand_id = brands.id").Scan(&voucher)
+	err := vd.db.Model(&Voucher{}).Select("vouchers.id, vouchers.voucher_name, brands.brand_name, vouchers.cim, vouchers.cip").
+		Joins("join brands on vouchers.brand_id = brands.id").Where("vouchers.id = ?", id).Scan(&voucher)
 
 	if err.Error != nil {
 		log.Println("cant get voucher data", err.Error.Error())
