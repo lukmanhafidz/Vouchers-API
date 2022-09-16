@@ -31,7 +31,7 @@ func (bc *brandUseCase) CreateBrand(newBrand domain.Brand) int {
 	}
 
 	create := bc.brandData.CreateBrandData(brand.ToModel())
-	if create.Name == "" {
+	if create.BrandName == "" {
 		log.Println("Empty Data")
 		return 500
 	}

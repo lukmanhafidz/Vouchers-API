@@ -13,8 +13,8 @@ import (
 func TestCreateBrand(t *testing.T) {
 	repo := new(mocks.BrandData)
 
-	mockData := domain.Brand{Name: "indomaret"}
-	returnData := domain.Brand{ID: 1, Name: "indomaret"}
+	mockData := domain.Brand{BrandName: "indomaret"}
+	returnData := domain.Brand{ID: 1, BrandName: "indomaret"}
 
 	t.Run("Success Create", func(t *testing.T) {
 		repo.On("CreateBrandData", mock.Anything).Return(returnData).Once()

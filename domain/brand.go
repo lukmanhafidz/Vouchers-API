@@ -3,8 +3,8 @@ package domain
 import "github.com/labstack/echo/v4"
 
 type Brand struct {
-	ID   int
-	Name string
+	ID        int
+	BrandName string
 }
 
 type BrandHandler interface {
